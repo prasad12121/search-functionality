@@ -1,7 +1,7 @@
 import styles from "../App.module.css";
 import clsx from "clsx";
 import Check from "../check.svg?react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { sortBy } from "lodash";
 
 type Story = {
@@ -18,7 +18,9 @@ type ListProps = {
   onRemoveItem: (item: Story) => void;
 };
 
-const SORTS = {
+type SortFunction = (list: Story[]) => Story[];
+
+const SORTS : Record<string,SortFunction>= {
   NONE: (list) => list,
   TITLE: (list) => sortBy(list, "title"),
   AUTHOR: (list) => sortBy(list, "author"),

@@ -9,17 +9,17 @@ const API_SEARCH = "/search";
 const PARAM_SEARCH = "query=";
 const PARAM_PAGE = "page=";
 
-const getUrl = (searchTerm, page) =>
+const getUrl = (searchTerm:string, page:number) =>
   `${API_BASE}${API_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}`;
 
-const extractSearchTerm = (urlAdd) =>
+const extractSearchTerm = (urlAdd:string) =>
   urlAdd
     .substring(urlAdd.lastIndexOf("?") + 1, urlAdd.lastIndexOf("&"))
     .replace(PARAM_SEARCH, "");
 
-const getLastSearches = (url) =>
+const getLastSearches = (url:string[]) =>
   url
-    .reduce((result, urlAdd, index) => {
+    .reduce<string[]>((result, urlAdd, index) => {
       const searchTerm = extractSearchTerm(urlAdd);
 
       if (index === 0) {
@@ -48,7 +48,7 @@ type Story = {
 type StoriesState = {
   data: Story[];
   page: number;
-  isLoading: false;
+  isLoading: boolean;
   isError: boolean;
 };
 
@@ -58,7 +58,10 @@ type StoriesFetchInitAction = {
 
 type StoriesFetchSuccessAction = {
   type: "STORIES_FETCH_SUCCESS";
-  payload: Story[];
+  payload: {
+    list:Story[];
+    page:number;
+  };
 };
 
 type StoriesFetchFailureAction = {

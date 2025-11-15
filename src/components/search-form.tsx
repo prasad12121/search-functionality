@@ -1,5 +1,4 @@
 
-import {React} from "react";
 import styles from "../App.module.css";
 import clsx from "clsx";
 import { InputWithLabel } from "./input-with-label";

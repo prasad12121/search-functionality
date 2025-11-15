@@ -1,4 +1,5 @@
 {
+  "homepage": "https://prasad12121.github.io/search-functionality",
   "name": "test",
   "private": true,
   "version": "0.0.0",
@@ -7,7 +8,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "axios": "^1.13.2",
@@ -19,6 +22,7 @@
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@svgr/webpack": "^8.1.0",
+    "@types/lodash": "^4.17.20",
     "@types/node": "^24.6.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
