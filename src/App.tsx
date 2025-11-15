@@ -225,7 +225,7 @@ function App() {
       <hr />
       {stories.isError && <p>something went wrong</p>}
       {stories.isLoading ? (
-        <p> ....loading yyyyyyyajsdjhasd</p>
+        <p> ....loading</p>
       ) : (
         <List list={searchedStories} onRemoveItem={handleRemoveStory} />
       )}
